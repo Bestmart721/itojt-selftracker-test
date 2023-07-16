@@ -10,39 +10,25 @@
 
     <v-row no-gutters>
         <v-col cols="12" md="6">
-            <v-card class="my-4  pa-2 rounded-lg fill-height" title="Your overall progress" >
-                <v-card-subtitle>
-                    The general status of your training file
-                </v-card-subtitle>
-                <v-card-text>
-                    <h4 class="text-h4 my-2">Attendance</h4>
-                    <v-progress-linear model-value="75" class="rounded-lg" color="blue" width="50%"></v-progress-linear>
-                    <div>Acceptable</div>
-                    <h4 class="text-h4 my-2">Community Service</h4>
-                    <v-progress-linear model-value="20" class="rounded-lg"></v-progress-linear>
-                    <div>you suck</div>
-                    <h4 class="text-h4 my-2">Marksmanship</h4>
-                    <v-progress-linear model-value="0" class="rounded-lg"></v-progress-linear>
-                    <div>oh god</div>
-                </v-card-text>
-            </v-card>
+            <overall-progress :append-fill-height="appendFillHeight" />
         </v-col>
         <v-col cols="12" md="6">
             <!--
                 <v-btn @click="numberOfCheese++" prepend-icon="mdi-cheese" class="ma-2 pa-2 rounded-lg">Cheese Counter: {{ numberOfCheese }}</v-btn>
             -->
-            <v-card class="my-4 pa-2 rounded-lg fill-height">
-
-            </v-card>
+            <upcoming-activities :append-fill-height="appendFillHeight"/>
         </v-col>
     </v-row>
+    <v-row no-gutters=""></v-row>
 </v-container>  
 </template>
 
 <script setup>
     import { onMounted, ref, computed } from 'vue';
     import { willoughby } from '@/assets/data';
-    import { useDisplay } from 'vuetify'
+    import { useDisplay } from 'vuetify';
+    import OverallProgress from './HomeDashboardComponents/OverallProgress.vue';
+    import UpcomingActivities from '@/components/HomeDashboardComponents/UpcomingActivities.vue'
 
     const { mdAndUp } = useDisplay()
     const greetingMessages = ref([
@@ -57,6 +43,7 @@
         'text-h2',
         'text-h3'
     ]
+
     onMounted(() => {
         const date = new Date()
         console.log(date.getHours())
@@ -79,6 +66,13 @@
         }
     })
 
+    const appendFillHeight = computed ( () => {
+        if (mdAndUp.value) {
+            return 'fill-height'
+        } else {
+            return null
+        }
+    })
 </script>
 
 <style scoped>

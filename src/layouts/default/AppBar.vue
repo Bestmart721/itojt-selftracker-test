@@ -4,7 +4,7 @@
     <v-img class="mx-2" src="@/assets/cadetslogo.png" max-height="40" max-width="80" contain>
     </v-img>
     <v-app-bar-title>
-      MyCdt (T)
+      Cadet Compass (α)
     </v-app-bar-title>
   </v-app-bar>
   <v-navigation-drawer v-model="drawer">
@@ -31,8 +31,16 @@ import { ref } from 'vue';
       icon: "mdi-home"
     },
     {
-      title: 'Cadet365 Home',
+      title: 'Activities',
       value: 2,
+      icon: "mdi-nature-people",
+      action: () => {
+        router.push("/activities")
+      }
+    },
+    {
+      title: 'Cadet365 Home',
+      value: 3,
       action: () => {
         window.open("https://cjcr365.sharepoint.com")
       },
@@ -40,7 +48,7 @@ import { ref } from 'vue';
     },
     {
       title: "Cadets.ca",
-      value: 3,
+      value: 4,
       action: () => {
         window.open("https://cadets.gc.ca")
       },
