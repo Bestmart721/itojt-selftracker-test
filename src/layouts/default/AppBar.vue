@@ -39,8 +39,16 @@ import { ref } from 'vue';
       }
     },
     {
-      title: 'Cadet365 Home',
+      title: 'Login',
       value: 3,
+      icon: "mdi-account",
+      action: () => {
+        router.push("/login")
+      }
+    },
+    {
+      title: 'Cadet365 Home',
+      value: 4,
       action: () => {
         window.open("https://cjcr365.sharepoint.com")
       },
@@ -48,7 +56,7 @@ import { ref } from 'vue';
     },
     {
       title: "Cadets.ca",
-      value: 4,
+      value: 5,
       action: () => {
         window.open("https://cadets.gc.ca")
       },

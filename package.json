@@ -9,6 +9,7 @@
     "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@azure/msal-browser": "^2.38.0",
     "@mdi/font": "7.0.96",
     "core-js": "^3.29.0",
     "oidc-client-ts": "^2.2.4",

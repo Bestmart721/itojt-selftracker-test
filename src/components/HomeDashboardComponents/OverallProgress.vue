@@ -9,10 +9,10 @@
                     <div>Acceptable</div>
                     <h4 class="text-h4 my-2">Community Service</h4>
                     <v-progress-linear model-value="20" class="rounded-lg"></v-progress-linear>
-                    <div>you suck</div>
+                    <div>In Progress</div>
                     <h4 class="text-h4 my-2">Marksmanship</h4>
                     <v-progress-linear model-value="0" class="rounded-lg"></v-progress-linear>
-                    <div>oh god</div>
+                    <div>Not Started</div>
                 </v-card-text>
             </v-card>
 </template>

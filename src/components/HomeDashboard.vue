@@ -21,6 +21,7 @@
     </v-row>
     <v-row no-gutters=""></v-row>
 </v-container>  
+
 </template>
 
 <script setup>
@@ -29,6 +30,10 @@
     import { useDisplay } from 'vuetify';
     import OverallProgress from './HomeDashboardComponents/OverallProgress.vue';
     import UpcomingActivities from '@/components/HomeDashboardComponents/UpcomingActivities.vue'
+
+    let overlay = ref(false)
+
+    overlay.value = true
 
     const { mdAndUp } = useDisplay()
     const greetingMessages = ref([

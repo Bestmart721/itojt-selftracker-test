@@ -4,39 +4,38 @@
             Login
         </v-card-title>
         <v-card-actions>
-            <v-btn @click="login">
+            <v-btn @click="login" v-if="!auth.account">
                 Login
             </v-btn>
+            <v-btn @click="logout" v-if="auth.account">Logout</v-btn>
         </v-card-actions>
     </v-card>
+    <v-overlay v-model="overlay" :persistent="true">
 
+    </v-overlay>
 </template>
 
 <script setup>
-import AuthService from '@/services/openid.js'
-import { onMounted, ref } from 'vue';
-const ccLogin = new AuthService()
-
-let isLoggedIn = ref(false)
-let currentUser = ref()
-let accessTokenExpired = ref(false)
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { auth } from '@/stores/auth';
+let overlay = ref(false)
+const router = useRouter()
+const props = defineProps(['redirectPath'])
 
 function login() {
-    ccLogin.login()
+    console.log(props.redirectPath)
+    overlay.value = true
+    let currentLocation = location.pathname
+    auth.login().then(() => {overlay.value = false; router.push(props.redirectPath)}, () => {overlay.value = false;})
 }
 
+
+async function waitForLogin() {
+    awaitauth.login()
+    overlay.value = false
+}
 function logout() {
-    ccLogin.logout()
+    router.push('/logout')
 }
-
-onMounted(() => {
-    ccLogin.getUser().then(
-        (user) => {
-            currentUser.value = user.profile.name
-            accessTokenExpired.value = user.expired
-            isLoggedIn.value = ( user !== null && !user.expired) 
-        }
-        )
-})
-
 </script>

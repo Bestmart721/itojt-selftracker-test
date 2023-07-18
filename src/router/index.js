@@ -1,10 +1,21 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import { VueNavigationClient, hook } from './helpers'
+import { auth } from '@/stores/auth'
+
+const unmatched = '/:pathMatch(.*)*'
+const unguarded = [
+  '/',
+  '/login',
+  '/logout'
+
+]
 
 const routes = [
   {
     path: '/',
     component: () => import('@/layouts/default/Default.vue'),
+    props: true,
     children: [
       {
         path: '',
@@ -20,17 +31,60 @@ const routes = [
         component: () => import('@/views/Activities.vue')
       },
       {
-        path:'/login',
+        path: '/login',
         name: "Login",
-        component: () => import('@/views/Login.vue')
+        component: () => import('@/views/Login.vue'),
       }
     ],
   },
+  hook('/signin', auth.login),
+  hook('/logout', auth.logout)
+
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 })
+
+
+
+
+/// AUTHENTICATION
+
+// hook MSAL into router
+const client = new VueNavigationClient(router)
+
+// set up auth and guard routes
+router.beforeEach(async (to, from, next) => {
+  // 404
+  if (to.matched[0]?.path === unmatched) {
+    return next()
+  }
+
+  // guarded
+  const guarded = unguarded.every(path => path !== to.path)
+  if (guarded) {
+    // initialized
+    if (!auth.initialized) {
+      await auth.initialize(client)
+    }
+
+    // authorised
+    if (auth.account) {
+      return next()
+    }
+    // unauthorised
+    return next({path: '/login', query: {
+      redirectPath: encodeURIComponent(to.fullPath)
+    }})
+  }
+
+  // unguarded
+  next()
+})
+
+
+
 
 export default router
