@@ -13,7 +13,7 @@
                 <v-row>
                     <v-col cols="12" md="6">
                         <v-sheet class="pa-16 rounded-lg" >
-                            <div :class="titleClass">Welcome to Cadet Compass</div>
+                            <div :class="titleClass">Welcome to <div class="font-weight-medium" >Cadet Compass</div></div>
                             <v-img class="align-center button mt-6 rounded-lg" src="@/assets/c365en.svg" max-width="300" @click="handleLogin()">
                             </v-img>
                         </v-sheet>
@@ -24,8 +24,8 @@
         </v-main>
         <v-overlay v-model="overlay" :persistent="true" class="align-center justify-center">
             <v-sheet class="pa-6 rounded-lg">
-                <div>Please use the pop-up window to continue with sign-in.</div><br>
-                <div>Veuillez vous référer à la nouvelle fenêtre contextuelle pour vous connecter.</div>
+                <div>Please use the pop-up window to continue.</div><br>
+                <div>Veuillez vous référer à la fenêtre contextuelle pour continuer.</div>
             </v-sheet>
         </v-overlay>
     </v-app>
@@ -36,6 +36,7 @@ import { ref, computed } from 'vue';
 import { auth } from '@/stores/auth'
 import { useRouter } from 'vue-router';
 import { useDisplay } from 'vuetify/lib/framework.mjs';
+import { onMounted } from 'vue';
 
 const { lgAndUp } = useDisplay()
 
@@ -49,9 +50,6 @@ const titleClass = computed(() => {
 const router = useRouter()
 let overlay = ref(false)
 console.log(auth.account)
-if (auth.account) {
-    router.push('/app')
-}
 
 function getImageUrl(imgName) {
     return new URL(`../assets/loginBanners/${imgName}.jpg`, import.meta.url).href
@@ -70,7 +68,13 @@ function handleLogin() {
     auth.initialize()
     auth.login().then(() => {overlay.value = false; router.push('/app')}, () => {overlay.value = false;})
 }
-
+onMounted(() => {
+    auth.initialize().then((accountInfo) => {
+        if (accountInfo) {
+            router.push('/app')
+        }
+    })
+})
 </script>
 
 <style scoped>
