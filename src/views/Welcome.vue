@@ -65,15 +65,13 @@ const randomImage = computed( () => {
 
 function handleLogin() {
     overlay.value = true
-    auth.initialize()
     auth.login().then(() => {overlay.value = false; router.push('/app')}, () => {overlay.value = false;})
 }
 onMounted(() => {
-    auth.initialize().then((accountInfo) => {
-        if (accountInfo) {
+        if (auth.account) {
             router.push('/app')
         }
-    })
+    
 })
 </script>
 

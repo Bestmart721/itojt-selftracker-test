@@ -16,7 +16,7 @@ export const config: Configuration = {
     ],
 
     // login redirect; must match path in dashboard
-    redirectUri: `${location.origin}`,
+    redirectUri: `${window.location.origin}/callback.html`,
   },
 
   // optional
@@ -27,7 +27,7 @@ export const config: Configuration = {
     }
   }
 }
-
+console.log(config)
 function loggerCallback (level: LogLevel, message: string, containsPii: boolean) {
   if (!containsPii) {
     const parts = message.split(' : ')

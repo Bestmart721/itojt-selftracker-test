@@ -2,12 +2,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { VueNavigationClient, hook } from './helpers'
 import { auth } from '@/stores/auth'
+import { NavigationClient } from '@azure/msal-browser'
 
 const unmatched = '/:pathMatch(.*)*'
 const unguarded = [
   '/',
   '/login',
-  '/logout'
+  '/logout',
+  '/signin'
 
 ]
 
@@ -58,7 +60,7 @@ const router = createRouter({
 /// AUTHENTICATION
 
 // hook MSAL into router
-const client = new VueNavigationClient(router)
+const client = new NavigationClient()
 
 // set up auth and guard routes
 router.beforeEach(async (to, from, next) => {
