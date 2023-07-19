@@ -20,9 +20,6 @@ export default defineConfig({
         configFile: 'src/styles/settings.scss',
       },
     }),
-    VitePWA({
-      registerType: 'autoUpdate'
-    })
   ],
   define: { 'process.env': {} },
   resolve: {
