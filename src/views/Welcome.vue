@@ -13,9 +13,8 @@
                 <v-row>
                     <v-col cols="12" md="6">
                         <v-sheet class="pa-16 rounded-lg" >
-                            <div class="text-h1">Welcome to Cadet Compass</div>
-                            <v-img class="align-center button mt-6 rounded-lg" src="@/assets/cadet365button.png" width="250" @click="handleLogin()">
-                                <div style="color: white;" class="ma-4">Log in with Cadet365</div>
+                            <div :class="titleClass">Welcome to Cadet Compass</div>
+                            <v-img class="align-center button mt-6 rounded-lg" src="@/assets/c365en.svg" max-width="300" @click="handleLogin()">
                             </v-img>
                         </v-sheet>
                     </v-col>
@@ -36,8 +35,23 @@
 import { ref, computed } from 'vue';
 import { auth } from '@/stores/auth'
 import { useRouter } from 'vue-router';
+import { useDisplay } from 'vuetify/lib/framework.mjs';
+
+const { lgAndUp } = useDisplay()
+
+const titleClass = computed(() => {
+    if (lgAndUp.value) {
+        return 'text-h1'
+    } else {
+        return 'text-h3'
+    }
+})
 const router = useRouter()
 let overlay = ref(false)
+console.log(auth.account)
+if (auth.account) {
+    router.push('/app')
+}
 
 function getImageUrl(imgName) {
     return new URL(`../assets/loginBanners/${imgName}.jpg`, import.meta.url).href
@@ -53,6 +67,7 @@ const randomImage = computed( () => {
 
 function handleLogin() {
     overlay.value = true
+    auth.initialize()
     auth.login().then(() => {overlay.value = false; router.push('/app')}, () => {overlay.value = false;})
 }
 
