@@ -10,6 +10,7 @@ import 'vuetify/styles'
 
 // Composables
 import { createVuetify } from 'vuetify'
+import CustomIcon from '@/assets/Cadet365Logo.vue'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
@@ -23,4 +24,11 @@ export default createVuetify({
       },
     },
   },
+  icons: {
+    values: {
+      cadet365: {
+        component: CustomIcon
+      }
+    }
+  }
 })

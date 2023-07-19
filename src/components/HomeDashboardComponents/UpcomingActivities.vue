@@ -70,6 +70,6 @@
     ])
     const props = defineProps(['appendFillHeight'])
     const openActivities = ref(() => {
-        router.push("/activities")
+        router.push("/app/activities")
     })
 </script>

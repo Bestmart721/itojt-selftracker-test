@@ -13,12 +13,12 @@ const unguarded = [
 
 const routes = [
   {
-    path: '/',
+    path: '/app',
     component: () => import('@/layouts/default/Default.vue'),
     props: true,
     children: [
       {
-        path: '',
+        path: '/app',
         name: 'Home',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
@@ -26,7 +26,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
       {
-        path: '/activities',
+        path: '/app/activities',
         name: "Activities",
         component: () => import('@/views/Activities.vue')
       },
@@ -36,6 +36,11 @@ const routes = [
         component: () => import('@/views/Login.vue'),
       }
     ],
+  },
+  {
+    path: '/',
+    name: "Welcome",
+    component: () => import('@/views/Welcome.vue')
   },
   hook('/signin', auth.login),
   hook('/logout', auth.logout)

@@ -26,7 +26,7 @@ import { ref } from 'vue';
       value: 1,
       action: () => {
         //window.open("https://cjcr365.sharepoint.com")
-        router.push("/")
+        router.push("/app")
       },
       icon: "mdi-home"
     },
@@ -35,11 +35,11 @@ import { ref } from 'vue';
       value: 2,
       icon: "mdi-nature-people",
       action: () => {
-        router.push("/activities")
+        router.push("/app/activities")
       }
     },
     {
-      title: 'Login',
+      title: 'Account',
       value: 3,
       icon: "mdi-account",
       action: () => {

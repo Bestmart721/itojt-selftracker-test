@@ -1,12 +1,18 @@
 <template>
-    <LoginBox :redirectPath="decodedComponent" />
+    <LoginBox :redirectPath="actualRoute"/>
 </template>
 
 <script setup>
     import LoginBox from '@/components/LoginBox.vue'
     import { useRoute } from 'vue-router';
-    import { ref } from 'vue';
+    import { computed } from 'vue';
+
     const route = useRoute()
-    let decodedComponent = ref(decodeURIComponent(route.query.redirectPath))
-    
+    console.log(route.query.redirectPath)
+    const actualRoute = computed(() => {
+        if (!route.query.redirectPath) {
+            return '/app'
+        } else return decodeURIComponent(route.query.redirectPath)
+    })
+
 </script>
