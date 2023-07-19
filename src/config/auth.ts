@@ -16,7 +16,7 @@ export const config: Configuration = {
     ],
 
     // login redirect; must match path in dashboard
-    redirectUri: `http://localhost:3000/`,
+    redirectUri: `${location.origin}`,
   },
 
   // optional
