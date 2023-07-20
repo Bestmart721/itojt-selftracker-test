@@ -21,6 +21,3 @@ export const willoughby = new Cadet("Caleb", "Willoughby", "MWO", "Army")
 console.log(willoughby)
 willoughby.trainingFile.pewPew = false
 
-const activities = {
-    
-}
