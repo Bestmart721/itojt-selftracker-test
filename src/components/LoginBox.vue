@@ -30,6 +30,10 @@ let overlay = ref(false)
 const router = useRouter()
 const props = defineProps(['redirectPath'])
 
+if (!auth.initialized) {
+    auth.initialize()
+}
+
 function login() {
     console.log(props.redirectPath)
     overlay.value = true

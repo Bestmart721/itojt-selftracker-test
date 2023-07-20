@@ -15,8 +15,9 @@
     </v-container>
 </template>
 <script setup>
-    import router from '@/router';
+    import { useRouter } from 'vue-router';
     import { ref, computed } from 'vue';
+    const router = useRouter()
     let activities = ref([
         {
             value: 1,

@@ -19,7 +19,7 @@
             <upcoming-activities :append-fill-height="appendFillHeight"/>
         </v-col>
     </v-row>
-    <v-row no-gutters=""></v-row>
+    <v-row no-gutters></v-row>
 </v-container>  
 
 </template>

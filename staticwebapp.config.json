@@ -5,5 +5,8 @@
     "navigationFallback": {
       "rewrite": "/index.html"
     },
-    "mimeTypes": { ".json": "text/json" }
+    "mimeTypes": { 
+      ".json": "text/json",
+      ".webmanifest": "application/manifest+json"
+    }
   }

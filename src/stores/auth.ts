@@ -13,10 +13,11 @@ async function initialize (client?: NavigationClient) {
   }
   return Auth.initialize(client).then(data => {
     account.value = data
+    initialized.value = true
+    console.log('Initialized executed!')
     return data
   })
 }
-
 async function login () {
   error.value = ''
   return Auth.login()

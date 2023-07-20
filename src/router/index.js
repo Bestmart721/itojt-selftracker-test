@@ -1,6 +1,6 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import { VueNavigationClient, hook } from './helpers'
+import { hook } from './helpers'
 import { auth } from '@/stores/auth'
 import { NavigationClient } from '@azure/msal-browser'
 

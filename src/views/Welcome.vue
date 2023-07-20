@@ -39,7 +39,7 @@ import { useDisplay } from 'vuetify/lib/framework.mjs';
 import { onMounted } from 'vue';
 
 const { lgAndUp } = useDisplay()
-
+console.log(auth.initialized)
 const titleClass = computed(() => {
     if (lgAndUp.value) {
         return 'text-h1'
@@ -68,10 +68,11 @@ function handleLogin() {
     auth.login().then(() => {overlay.value = false; router.push('/app')}, () => {overlay.value = false;})
 }
 onMounted(() => {
-        if (auth.account) {
-            router.push('/app')
-        }
-    
+    auth.initialize().then((accountInfo) => {
+        if (accountInfo) {
+                router.push('/app')
+            }
+    })
 })
 </script>
 
