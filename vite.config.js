@@ -29,7 +29,7 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: 'pwa-64x64',
+            src: 'pwa-64x64.png',
             sizes: '64x64',
             type: 'image/png',
             purpose: 'any'
