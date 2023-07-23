@@ -13,14 +13,20 @@
             <overall-progress :append-fill-height="appendFillHeight" />
         </v-col>
         <v-col cols="12" md="6">
-            <!--
-                <v-btn @click="numberOfCheese++" prepend-icon="mdi-cheese" class="ma-2 pa-2 rounded-lg">Cheese Counter: {{ numberOfCheese }}</v-btn>
-            -->
+
             <upcoming-activities :append-fill-height="appendFillHeight"/>
         </v-col>
     </v-row>
-    <v-row no-gutters></v-row>
+    <v-row no-gutters>
+        <v-col cols="12" md="6">
+            <my-training-program />
+        </v-col>
+        <v-col cols="12" md="6">
+            <MyEvaluations />
+        </v-col>
+    </v-row>
 </v-container>  
+<v-btn @click="numberOfCheese++" prepend-icon="mdi-cheese" class="ma-2 px4 bg-primaryContainer on-PrimaryContainer" variant="flat">Cheese Counter: {{ numberOfCheese }}</v-btn>
 
 </template>
 
@@ -30,6 +36,8 @@
     import { useDisplay } from 'vuetify';
     import OverallProgress from './HomeDashboardComponents/OverallProgress.vue';
     import UpcomingActivities from '@/components/HomeDashboardComponents/UpcomingActivities.vue'
+    import MyTrainingProgram from '@/components/HomeDashboardComponents/MyTrainingProgram.vue'
+    import MyEvaluations from './HomeDashboardComponents/MyEvaluations.vue';
 
     let overlay = ref(false)
 

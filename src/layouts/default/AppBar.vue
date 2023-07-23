@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar class="rounded-lg" rounded>
+  <v-app-bar>
     <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     <v-img class="mx-2" src="@/assets/cadetslogo.png" max-height="40" max-width="80" contain>
     </v-img>
@@ -8,8 +8,9 @@
     </v-app-bar-title>
   </v-app-bar>
   <v-navigation-drawer v-model="drawer">
-    <v-list :nav="true">
-      <v-list-item v-for="(item,i) in items" :key = "i" :value="item" @click = "item.action" :prepend-icon="item.icon">
+    <v-list nav>
+      <v-list-item v-for="(item,i) in items" :key = "i" :value="item" :prepend-icon="item.icon"
+        :to="item.path" color="bg-primary">
         <v-list-item-title v-text="item.title"></v-list-item-title>
       </v-list-item>
      </v-list>
@@ -18,38 +19,47 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
+import { useRoute } from 'vue-router'
 const router = useRouter()
+const route = useRoute()
 import { ref } from 'vue';
+let someKey = ref(false)
+
+console.log(route.fullPath)
+
   let drawer = ref(false)
   let items = ref([
     {
       title: 'Home',
       value: 1,
-      action: () => {
-        //window.open("https://cjcr365.sharepoint.com")
-        router.push("/app")
-      },
-      icon: "mdi-home"
+      path: 'home',
+      icon: "mdi-home",
+      key: true,
     },
     {
       title: 'Activities',
       value: 2,
       icon: "mdi-nature-people",
-      action: () => {
-        router.push("/app/activities")
-      }
+      path: 'activities',
+      key: true,
+    },
+    {
+      title: 'Evaluations',
+      value: 3,
+      icon: "mdi-note-multiple",
+      path: 'evaluations',
+      key: true,
     },
     {
       title: 'Account',
-      value: 3,
+      value: 4,
       icon: "mdi-account",
-      action: () => {
-        router.push("/login")
-      }
+      path: 'login',
+      key: true,
     },
     {
       title: 'Cadet365 Home',
-      value: 4,
+      value: 5,
       action: () => {
         window.open("https://cjcr365.sharepoint.com")
       },
@@ -57,11 +67,12 @@ import { ref } from 'vue';
     },
     {
       title: "Cadets.ca",
-      value: 5,
+      value: 6,
       action: () => {
         window.open("https://cadets.gc.ca")
       },
       icon: "mdi-open-in-new"
     }
   ])
+  
 </script>

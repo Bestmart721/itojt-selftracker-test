@@ -20,7 +20,11 @@ const routes = [
     props: true,
     children: [
       {
-        path: '/app',
+        path: '',
+        redirect: '/app/home'
+      },
+      {
+        path: 'home',
         name: 'Home',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
@@ -28,15 +32,20 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
       {
-        path: '/app/activities',
+        path: 'activities',
         name: "Activities",
         component: () => import('@/views/Activities.vue')
       },
       {
-        path: '/login',
+        path: 'login',
         name: "Login",
         component: () => import('@/views/Login.vue'),
-      }
+      },
+      {
+      path: 'evaluations',
+      name: "Evaluations",
+      component: () => import('@/views/Evaluations.vue')
+      },
     ],
   },
   {
@@ -82,7 +91,7 @@ router.beforeEach(async (to, from, next) => {
       return next()
     }
     // unauthorised
-    return next({path: '/login', query: {
+    return next({path: '/app/login', query: {
       redirectPath: encodeURIComponent(to.fullPath)
     }})
   }
