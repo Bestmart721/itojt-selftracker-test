@@ -9,10 +9,11 @@
   </v-app-bar>
   <v-navigation-drawer v-model="drawer">
     <v-list nav>
-      <v-list-item v-for="(item,i) in items" :key = "i" :value="item" :prepend-icon="item.icon"
+      <v-list-item v-for="(item,i) in items" :key = "item.key" :value="item" :prepend-icon="item.icon"
         :to="item.path" color="bg-primary">
-        <v-list-item-title v-text="item.title"></v-list-item-title>
+        <v-list-item-title v-text="getTranslatedMenuOption(item.title)"></v-list-item-title>
       </v-list-item>
+      <v-list-item>{{ t('activities.title') }}</v-list-item>
      </v-list>
   </v-navigation-drawer>
 </template>
@@ -20,15 +21,16 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router'
-const router = useRouter()
 const route = useRoute()
 import { ref } from 'vue';
-let someKey = ref(false)
+import { useI18n } from 'vue-i18n';
+const { t, te } = useI18n()
 
+console.log(t('activities.title'))
 console.log(route.fullPath)
 
   let drawer = ref(false)
-  let items = ref([
+  const items = ref([
     {
       title: 'Home',
       value: 1,
@@ -37,25 +39,32 @@ console.log(route.fullPath)
       key: true,
     },
     {
-      title: 'Activities',
+      title: 'activities',
       value: 2,
       icon: "mdi-nature-people",
       path: 'activities',
-      key: true,
+      key: t('activities.title'),
     },
     {
-      title: 'Evaluations',
+      title: 'evaluations',
       value: 3,
       icon: "mdi-note-multiple",
       path: 'evaluations',
-      key: true,
+      key: t('evaluations.title'),
     },
     {
-      title: 'Account',
+      title: 'account',
       value: 4,
       icon: "mdi-account",
       path: 'login',
-      key: true,
+      key: t('account.title'),
+    },
+    {
+      title: 'settings',
+      value: 12,
+      icon: 'mdi-cog',
+      path: 'settings',
+      key: t('settings.title')
     },
     {
       title: 'Cadet365 Home',
@@ -74,5 +83,13 @@ console.log(route.fullPath)
       icon: "mdi-open-in-new"
     }
   ])
+
+ function getTranslatedMenuOption(optionTitle) {
+  if (te(optionTitle + '.title')) {
+    return t(optionTitle + '.title')
+  } else {
+    return optionTitle
+  }
+ }
   
 </script>

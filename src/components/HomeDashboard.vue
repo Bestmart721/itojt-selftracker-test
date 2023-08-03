@@ -3,7 +3,9 @@
     <v-row no-gutters>
       <v-col>
         <v-sheet class="pa-6 ma-2 rounded-lg" elevation="2" rounded style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); "> 
-            <div :class="titleSize">{{ greetingMessages[periodOfDay] + ', ' + cadetName }}</div>  
+            <div :class="titleSize">{{ //greetingMessages[periodOfDay] + ', ' + cadetName   
+                t(greetingMessage, {name: cadetName})
+            }}</div>  
         </v-sheet>
       </v-col>
     </v-row>
@@ -38,17 +40,16 @@
     import UpcomingActivities from '@/components/HomeDashboardComponents/UpcomingActivities.vue'
     import MyTrainingProgram from '@/components/HomeDashboardComponents/MyTrainingProgram.vue'
     import MyEvaluations from './HomeDashboardComponents/MyEvaluations.vue';
+    import { useI18n } from 'vue-i18n';
+    
+    const { t } = useI18n()
 
     let overlay = ref(false)
 
     overlay.value = true
 
     const { mdAndUp } = useDisplay()
-    const greetingMessages = ref([
-        "Good morning",
-        "Good afternoon",
-        "Good evening"
-    ])
+
     let periodOfDay = ref(0)
     let numberOfCheese = ref(0)
     let loadedCadetProfile = ref(willoughby)
@@ -70,6 +71,17 @@
         /*console.log(greetingMessages.value[periodOfDay.value])*/
     })
     
+    const greetingMessage = computed(() => {
+        switch (periodOfDay.value) {
+            case 0:
+                return 'dashboardStrings.greetings.morning'
+            case 1:
+                return 'dashboardStrings.greetings.afternoon'
+            case 2:
+                return 'dashboardStrings.greetings.evening'
+        }
+    })
+
     const cadetName = computed( () => { return loadedCadetProfile.value.rank +  ' ' + loadedCadetProfile.value.lname })
     const titleSize = computed ( () => {
         if (mdAndUp.value) {

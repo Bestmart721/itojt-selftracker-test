@@ -16,6 +16,7 @@
     "openid-client": "^5.4.3",
     "roboto-fontface": "*",
     "vue": "^3.2.0",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.0.0",
     "vuetify": "^3.0.0",
     "webfontloader": "^1.0.0"

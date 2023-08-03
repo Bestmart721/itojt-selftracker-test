@@ -3,7 +3,7 @@
         <v-row>
             <v-col>
                 <v-card>
-                    <v-card-title>Activities</v-card-title>
+                    <v-card-title>{{ t('activities.title') }}</v-card-title>
                     <v-card-text>
                         <v-list lines="2">
                             <v-list-item class="ma-4" v-for="item in activities" :key="item.value" :title="item.title" :subtitle="item.subtitle" @click="item.action"></v-list-item>
@@ -17,6 +17,8 @@
 <script setup>
     import { useRouter } from 'vue-router';
     import { ref, computed } from 'vue';
+    import { useI18n } from 'vue-i18n';
+    const { t } = useI18n()
     const router = useRouter()
     let activities = ref([
         {
