@@ -3,13 +3,15 @@
         <v-col>
             <v-card class="rounded-lg">
         <v-card-title>
-            Account
+            {{ t('account.loginLogoutBox.title') }}
         </v-card-title>
         <v-card-actions>
             <v-btn @click="login" v-if="!auth.account">
-                Login
+                {{ t('account.loginLogoutBox.loginButton') }}
             </v-btn>
-            <v-btn @click="logout" v-if="auth.account">Logout</v-btn>
+            <v-btn @click="logout" v-if="auth.account"> 
+                {{ t('account.loginLogoutBox.logoutButton') }}
+</v-btn>
         </v-card-actions>
     </v-card>
         </v-col>
@@ -26,6 +28,9 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { auth } from '@/stores/auth';
+    import { useI18n } from 'vue-i18n';
+    const { t } = useI18n()
+
 let overlay = ref(false)
 const router = useRouter()
 const props = defineProps(['redirectPath'])
