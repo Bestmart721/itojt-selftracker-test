@@ -1,4 +1,4 @@
-export const settings_en = {
+export const t_settings_en = {
     title: 'Settings',
     languageSettings: {
         title: 'Language',

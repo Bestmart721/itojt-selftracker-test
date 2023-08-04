@@ -1,6 +1,6 @@
 <template>
 <v-card class="ma-2 mt-6 pa-2">
-    <v-card-title>Your Upcoming Evaluations</v-card-title>
+    <v-card-title>{{ t('dashboardStrings.upcomingEvaluations.title') }}</v-card-title>
     <v-card-text>
         <v-list>
         <v-list-item v-for="item in evaluations.slice(0,3)" :key="item.value" :title="item.title"
@@ -10,7 +10,7 @@
     </v-list>
     </v-card-text>
     <v-card-actions>
-        <v-btn v-if="Object.keys(evaluations).length > 3" text="Show All" @click="openEvaluations"
+        <v-btn v-if="Object.keys(evaluations).length > 3" :text="t('dashboardStrings.upcomingEvaluations.showAll')" @click="openEvaluations"
             class="bg-primaryContainer on-primaryContainer px-4"
             prepend-icon="mdi-menu"
             ></v-btn>
@@ -20,6 +20,8 @@
 </template>
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
         let evaluations = ref([
         {
             value: 1,

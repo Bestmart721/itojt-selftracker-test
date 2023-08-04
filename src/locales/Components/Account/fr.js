@@ -1,4 +1,4 @@
-export const account_fr = {
+export const t_account_fr = {
     title: 'Compte',
     loginLogoutBox: {
         title: 'Mon compte',

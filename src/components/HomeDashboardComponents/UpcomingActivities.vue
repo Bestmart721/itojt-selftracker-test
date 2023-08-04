@@ -1,6 +1,6 @@
 <template>
     <v-card :class="'ma-2 pa-2 rounded-lg ' + props.appendFillHeight">
-    <v-card-title>Your upcoming activities</v-card-title>
+    <v-card-title>{{ t('dashboardStrings.upcomingActivities.title') }}</v-card-title>
     <v-card-text>
         <v-list>
             <v-list-item v-for="item in activities.slice(0,3)" :key="item.value" :title="item.title"
@@ -10,7 +10,7 @@
         </v-list>
     </v-card-text>
     <v-card-actions>
-        <v-btn v-if="Object.keys(activities).length > 3" text="Show All" @click="openActivities"
+        <v-btn v-if="Object.keys(activities).length > 3" :text="t('dashboardStrings.upcomingActivities.showAll')" @click="openActivities"
             class="bg-primaryContainer on-primaryContainer px-4"
             prepend-icon="mdi-menu"
             ></v-btn>
@@ -21,6 +21,8 @@
 <script setup>
     import { ref, computed } from 'vue';
     import { useRouter } from 'vue-router';
+    import { useI18n } from 'vue-i18n';
+    const { t } = useI18n()
     const router = useRouter()
     let activities = ref([
         {

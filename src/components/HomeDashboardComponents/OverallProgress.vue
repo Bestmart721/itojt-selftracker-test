@@ -1,7 +1,7 @@
 <template>
-        <v-card :class="'ma-2 pa-2 rounded-lg ' + appendFillHeight" title="Your overall progress" >
+        <v-card :class="'ma-2 pa-2 rounded-lg ' + appendFillHeight" :title="t('dashboardStrings.overallProgress.title')" >
                 <v-card-subtitle>
-                    The general status of your training file
+                    {{ t('dashboardStrings.overallProgress.subtitle')}}
                 </v-card-subtitle>
                 <v-card-text>
                     <h4 class="text-h4 my-2">Attendance</h4>
@@ -19,6 +19,8 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 
 const props = defineProps(['appendFillHeight'])
 

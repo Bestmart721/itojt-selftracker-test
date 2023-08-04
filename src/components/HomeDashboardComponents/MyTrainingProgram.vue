@@ -1,10 +1,10 @@
 <template>
 <v-card class="ma-2 mt-6 pa-2">
 <v-card-title>
-    Your training program
+    {{ t('dashboardStrings.trainingProgram.title') }}
 </v-card-title>
 <v-card-subtitle>
-    Requirements for your training year
+    {{ t('dashboardStrings.trainingProgram.subtitle') }}
 </v-card-subtitle>
 <v-card-text>
     <div class="text-h3 mx-2">Phase 4</div>
@@ -19,5 +19,6 @@
 </v-card>
 </template>
 <script setup>
-
+    import { useI18n } from 'vue-i18n';
+    const { t } = useI18n()
 </script>

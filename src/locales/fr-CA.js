@@ -1,21 +1,16 @@
-import { account_fr } from "./Components/Account/fr"
-import { activities_fr } from "./Components/Activities/fr"
-import { evaluations_fr } from "./Components/Evaluations/fr"
-import { settings_fr } from "./Components/Settings/fr"
+import { t_account_fr } from "./Components/Account/fr"
+import { t_activities_fr } from "./Components/Activities/fr"
+import { t_evaluations_fr } from "./Components/Evaluations/fr"
+import { t_settings_fr } from "./Components/Settings/fr"
+import { t_homeDashboard_fr } from "./Components/HomeDashboard/fr"
 
 export const fr = {
-    dashboardStrings: {
-        greetings: {
-            morning: 'Bonjour, {name}!',
-            afternoon: 'Bon après-midi, {name}!',
-            evening: 'Bonsoir, {name}!'
-        }
-    },
+    dashboardStrings: t_homeDashboard_fr,
     languageName: 'Français',
-    account: account_fr,
-    activities: activities_fr,
-    evaluations: evaluations_fr,
-    settings: settings_fr,
+    account: t_account_fr,
+    activities: t_activities_fr,
+    evaluations: t_evaluations_fr,
+    settings: t_settings_fr,
     $vuetify: {
         badge: 'Badge',
         close: 'Fermer',

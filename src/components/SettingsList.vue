@@ -24,9 +24,6 @@
     import { ref, computed } from 'vue'    
     const {t, locale, availableLocales} = useI18n({
     })
-    import { getCurrentInstance } from 'vue';
-    const instance = getCurrentInstance()
-    instance.proxy.$forceUpdate()
     const availableLanguagesFullName = ref(['English', 'Français'])
     
     const selectedLanguage = computed({

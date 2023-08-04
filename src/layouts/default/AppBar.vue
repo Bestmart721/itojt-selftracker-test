@@ -13,7 +13,6 @@
         :to="item.path" color="bg-primary">
         <v-list-item-title v-text="getTranslatedMenuOption(item.title)"></v-list-item-title>
       </v-list-item>
-      <v-list-item>{{ t('activities.title') }}</v-list-item>
      </v-list>
   </v-navigation-drawer>
 </template>
@@ -32,7 +31,7 @@ console.log(route.fullPath)
   let drawer = ref(false)
   const items = ref([
     {
-      title: 'Home',
+      title: 'dashboardStrings',
       value: 1,
       path: 'home',
       icon: "mdi-home",

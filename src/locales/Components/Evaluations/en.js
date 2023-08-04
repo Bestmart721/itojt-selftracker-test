@@ -1,4 +1,4 @@
-export const evaluations_en = {
+export const t_evaluations_en = {
     title: 'Evaluations',
     evaluationsList: {
         title: 'Evaluations',

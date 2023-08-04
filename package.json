@@ -11,6 +11,7 @@
   "dependencies": {
     "@azure/msal-browser": "^2.38.0",
     "@mdi/font": "7.0.96",
+    "axios": "^1.4.0",
     "core-js": "^3.29.0",
     "oidc-client-ts": "^2.2.4",
     "openid-client": "^5.4.3",
