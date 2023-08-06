@@ -1,6 +1,6 @@
 {
     "globalHeaders": {
-      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+      "content-security-policy": "default-src https://cadetcompass.azurewebsites.net 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
     },
     "navigationFallback": {
       "rewrite": "/index.html"

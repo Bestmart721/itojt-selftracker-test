@@ -8,10 +8,11 @@ console.log(auth.account)
 
 let cadets = []
 
-axios.get('http://localhost:3000/cadets')
+axios.get('https://cadetcompass.azurewebsites.net/cadets')
     .then((response) => {
+        cadets = response.data
+        console.log(cadets)
         console.log(response)
-        
     })
     .catch((error) => {
         console.log(error)
