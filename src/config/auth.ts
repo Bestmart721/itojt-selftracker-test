@@ -2,7 +2,7 @@ import type { Configuration } from '@azure/msal-browser'
 import { LogLevel } from '@azure/msal-browser'
 
 export const scopes = [
-  'openid profile'
+  'openid','profile', 'api://26581cea-19ca-4e02-8e64-68676836db6c/CadetData.ReadAll'
 ]
 
 export const config: Configuration = {

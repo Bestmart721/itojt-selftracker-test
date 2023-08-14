@@ -2,21 +2,18 @@
 
 import axios from "axios"
 import { auth } from "@/stores/auth"
+import { Api } from "@/services/api"
 
 console.log(axios)
 console.log(auth.account)
 
 let cadets = []
 
-axios.get('https://cadetcompass.azurewebsites.net/cadets')
-    .then((response) => {
-        cadets = response.data
-        console.log(cadets)
-        console.log(response)
-    })
-    .catch((error) => {
-        console.log(error)
-    })
+Api.get('http://localhost:8080/en/personal_info').then((response) => {
+    console.log(response)
+    cadets = response
+    console.log(cadets)
+})
 
 export class Cadet {
     constructor(fname, lname, rank, element) {

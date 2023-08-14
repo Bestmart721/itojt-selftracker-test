@@ -59,7 +59,7 @@ console.log(getImageUrl('img1').toString())
 const images = ['img1', 'img2', 'img3', 'img4', 'img5', 'img6', 'img7']
 
 const randomImage = computed( () => {
-    return images[Math.floor(Math.random() * 7)]
+    return images[Math.floor(Math.random() * 6)]
 }
 )
 

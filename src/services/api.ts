@@ -32,6 +32,6 @@ async function call (method: 'get' | 'post', path: string, data?: any) {
       : options['body'] = JSON.stringify(data)
   }
 
-  return fetch(`${root}${path}`, options)
+  return fetch(`${path}`, options)
     .then(response => response.json())
 }

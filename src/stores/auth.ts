@@ -37,6 +37,7 @@ async function logout () {
   })
 }
 
+
 export const auth = reactive({
   error,
   account,

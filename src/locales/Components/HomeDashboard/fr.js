@@ -21,7 +21,7 @@ export const t_homeDashboard_fr = {
     },
     trainingProgram: {
         title: "Votre programme d'entraînement",
-        subtitle: 'Requirements for your training year',
+        subtitle: "Préalables pour réussir le programme d'entraînement",
     },
     upcomingEvaluations: {
         title: 'Évaluations à venir',
