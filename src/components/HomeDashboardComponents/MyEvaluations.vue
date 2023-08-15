@@ -40,7 +40,7 @@ const { t } = useI18n()
         },
         {
             value: 3,
-            title: "",
+            title: "Expedition Planning",
             subtitle: "July 5th 2023",
             action: () => {
                 console.log("yayyyy")

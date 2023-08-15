@@ -6,7 +6,7 @@ import { Api } from "@/services/api"
 import { ref } from "vue"
 console.log(axios)
 console.log(auth.account)
-const apiRoot = 'http://localhost:8080'
+const apiRoot = 'https://cadetcompass.azurewebsites.net'
 export let cadet = ref('No Data')
 
 Api.get(`${apiRoot}/en/personal_info`).then((response) => {
