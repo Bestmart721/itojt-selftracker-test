@@ -22,7 +22,7 @@ export const config: Configuration = {
   // optional
   system: {
     loggerOptions: {
-      logLevel: LogLevel.Verbose,
+      logLevel: LogLevel.Error,
       loggerCallback,
     }
   }

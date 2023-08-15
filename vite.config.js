@@ -22,6 +22,7 @@ export default defineConfig({
     }),
     VitePWA({
       includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png', 'maskable-icon-512x512.png'],
+      registerType: 'autoUpdate',
       manifest: {
         name: 'Cadet Compass',
         short_name: 'CdtCompass',

@@ -30,6 +30,7 @@ import { useRouter } from 'vue-router';
 import { auth } from '@/stores/auth';
     import { useI18n } from 'vue-i18n';
     const { t } = useI18n()
+import { Auth } from '@/services/auth';
 
 let overlay = ref(false)
 const router = useRouter()
@@ -51,4 +52,8 @@ function logout() {
     auth.logout().then(() => {overlay.value = false}, () => {overlay.value = false;})
 
 }
+
+Auth.getToken().then(res => {
+    console.log(res)
+})
 </script>
