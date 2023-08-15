@@ -1,4 +1,3 @@
-import { root } from '@/config/api'
 import { Auth } from './auth'
 
 /**

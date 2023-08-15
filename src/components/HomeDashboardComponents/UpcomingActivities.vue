@@ -1,9 +1,9 @@
 <template>
-    <v-card :class="'ma-2 pa-2 rounded-lg ' + props.appendFillHeight">
+    <v-card :class="'d-flex flex-column ma-2 pa-2 rounded-lg ' + appendFillHeight">
     <v-card-title>{{ t('dashboardStrings.upcomingActivities.title') }}</v-card-title>
-    <v-card-text>
+    <v-card-text class="grow">
         <v-list>
-            <v-list-item v-for="item in activities.slice(0,3)" :key="item.value" :title="item.title"
+            <v-list-item v-for="item in activities.slice(0,4)" :key="item.value" :title="item.title"
             :subtitle="item.subtitle" @click="item.action"
              class="rounded-lg ma-2" elevation="2" >
             </v-list-item>
@@ -11,8 +11,7 @@
     </v-card-text>
     <v-card-actions>
         <v-btn v-if="Object.keys(activities).length > 3" :text="t('dashboardStrings.upcomingActivities.showAll')" @click="openActivities"
-            class="bg-primaryContainer on-primaryContainer px-4"
-            prepend-icon="mdi-menu"
+            class=""
             ></v-btn>
     </v-card-actions>
 </v-card>
@@ -24,6 +23,7 @@
     import { useI18n } from 'vue-i18n';
     const { t } = useI18n()
     const router = useRouter()
+
     let activities = ref([
         {
             value: 1,
@@ -79,3 +79,6 @@
         location.href = "/app/activities"
     })
 </script>
+
+<style scoped>
+</style>

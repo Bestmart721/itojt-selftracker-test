@@ -22,7 +22,7 @@ const materialLight = {
     background: '#fffbff',
     primary: '#725c00',
     secondary: '#685e40',
-    tetiary: '#4566a4c',
+    tetiary: '#456a4c',
     surface: '#fffbff',
     "on-surface": '#1e1b16',
     "on-background": '#1e1b16',
