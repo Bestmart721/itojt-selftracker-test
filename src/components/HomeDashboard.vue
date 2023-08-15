@@ -2,8 +2,8 @@
     <v-container v-if="!renderCheck">
     <v-row no-gutters>
       <v-col>
-        <v-sheet class="pa-6 ma-2 rounded-lg" elevation="2" rounded style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); "> 
-            <div :class="titleSize">{{ //greetingMessages[periodOfDay] + ', ' + cadetName   
+        <v-sheet class="pa-6 ma-2 rounded-lg bg-primaryContainer on-primaryContainer" elevation="2" rounded > 
+            <div :class="titleSize + ' text-primary'" color="">{{ //greetingMessages[periodOfDay] + ', ' + cadetName   
                 t(greetingMessage, {name: cadetName})
             }}</div>  
         </v-sheet>

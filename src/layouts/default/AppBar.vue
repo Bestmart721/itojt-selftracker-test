@@ -1,10 +1,10 @@
 <template>
   <v-app-bar>
     <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-    <v-img class="mx-2" src="@/assets/cadetslogo.png" max-height="40" max-width="80" contain>
+    <v-img class="mx-2" src="@/assets/CdtCompass.png" max-height="40" max-width="40" contain>
     </v-img>
     <v-app-bar-title>
-      Cadet Compass (α)
+      {{ t('appName') }} (α)
     </v-app-bar-title>
   </v-app-bar>
   <v-navigation-drawer v-model="drawer">

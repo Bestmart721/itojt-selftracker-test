@@ -1,0 +1,1 @@
+export const t_data_fr = {}

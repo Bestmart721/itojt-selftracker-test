@@ -11,6 +11,7 @@ export const en = {
     account: t_account_en,
     evaluations: t_evaluations_en,
     settings: t_settings_en,
+    appName: 'CadetCompass',
     $vuetify: {
         badge: 'Badge',
         close: 'Close',

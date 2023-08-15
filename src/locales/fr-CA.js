@@ -11,6 +11,7 @@ export const fr = {
     activities: t_activities_fr,
     evaluations: t_evaluations_fr,
     settings: t_settings_fr,
+    appName: 'AtlasCadet',
     $vuetify: {
         badge: 'Badge',
         close: 'Fermer',
