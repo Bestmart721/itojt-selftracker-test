@@ -12,9 +12,9 @@
             <v-container class="align-center fill-height">
                 <v-row>
                     <v-col cols="12" md="6">
-                        <v-sheet :class="titleClass" >
-                            <div class="text-h3">Welcome to <div class="font-weight-medium" >CadetCompass</div></div><br>
-                            <div class="text-h3">Bienvenue à <br><div class="font-weight-medium" >AtlasCadets</div></div>
+                        <v-sheet :class="paddingClass" >
+                            <div :class="titleClass">Welcome to <div class="font-weight-medium" >CadetCompass</div></div><br>
+                            <div :class="titleClass">Bienvenue à <br><div class="font-weight-medium" >AtlasCadets</div></div>
                             <v-img class="align-center button mt-6 rounded-lg" src="@/assets/c365en.svg" max-width="300" @click="handleLogin()">
                             </v-img>
                         </v-sheet>
@@ -41,13 +41,22 @@ import { onMounted } from 'vue';
 
 const { lgAndUp } = useDisplay()
 console.log(auth.initialized)
-const titleClass = computed(() => {
+const paddingClass = computed(() => {
     if (lgAndUp.value) {
         return 'pa-16 rounded-lg'
     } else {
         return 'pa-10 rounded-lg'
     }
 })
+
+const titleClass = computed(() => {
+    if (lgAndUp.value) {
+        return 'text-h3'
+    } else {
+        return 'text-h4'
+    }
+})
+
 const router = useRouter()
 let overlay = ref(false)
 console.log(auth.account)
